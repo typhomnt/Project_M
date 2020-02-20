@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PlayerMaterialJoint
+  m_Name: GroundMaterial
   m_Shader: {fileID: -6465566751694194690, guid: 2cadec30be554a42dab28ec35ceb4cfc,
     type: 3}
   m_ShaderKeywords: 
@@ -85,12 +85,12 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _metallic: 0.73
-    - _roughness: 1.6
-    - _smoothness: 0.72
+    - _metallic: 0.67
+    - _roughness: 0.23
+    - _smoothness: 1
     m_Colors:
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-    - _albedo: {r: 0, g: 0, b: 0, a: 0}
+    - _albedo: {r: 0.8050018, g: 0.84812707, b: 0.8490566, a: 0}

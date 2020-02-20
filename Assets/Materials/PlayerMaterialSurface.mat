@@ -87,6 +87,7 @@ Material:
     - _ZWrite: 1
     - _metallic: 0.67
     - _roughness: 0.23
+    - _smoothness: 0.58
     m_Colors:
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
