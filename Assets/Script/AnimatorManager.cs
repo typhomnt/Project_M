@@ -5,6 +5,7 @@ using UnityEngine;
 public class AnimatorManager : MonoBehaviour
 {
     private Animator animator;
+    float posture_in = 0.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +17,9 @@ public class AnimatorManager : MonoBehaviour
     {
         animator.SetFloat("InputY", Input.GetAxis("Vertical"));
         animator.SetFloat("InputX", Input.GetAxis("Horizontal"));
-        animator.SetFloat("InputC", System.Convert.ToSingle(Input.GetButton("Jump")));
+        posture_in = System.Convert.ToSingle(Input.GetButton("Jump"));
+        animator.SetFloat("InputC", posture_in);
+
+        animator.SetLayerWeight(1, posture_in);
     }
 }
