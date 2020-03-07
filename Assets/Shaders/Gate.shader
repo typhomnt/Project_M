@@ -52,11 +52,13 @@
             fixed4 frag (v2f i) : SV_Target
             {
 				float alpha1 = abs(0.5 - frac((i.uv.y + _Time.x * 2) * 25));
+				alpha1 = pow(alpha1, 3);
 				float alpha2 = abs(0.5 - frac((i.uv.x) * 25));
+				alpha2 = pow(alpha2, 3);	
 				float d = max(abs(0.5 - i.uv.x), abs(0.5 - i.uv.y));
-				d = pow(d, 4);
+				d = pow(d, 6);
 				fixed4 col = _Color;
-				col.a = (alpha1 * alpha2 + d) * max(0, _GateStatus) * 20;
+				col.a = (alpha1 * alpha2 + d) * max(0, _GateStatus) * 50;
                 return col;
             }
             ENDCG
