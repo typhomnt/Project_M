@@ -257,6 +257,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1298851771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298851769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b468ec19f455d534f87feba85ed04794, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy_type: 1
+  fire_recharge: 1
+  rotation_speed: 1
+  movement_speed: 1
+  projectile_force: 10
+  player: {fileID: 1377436808}
+  projectile: {fileID: 5991288268641580840, guid: 40de47f122512654d9db20e23ef8f52d,
+    type: 3}
+  robot_waypoints:
+  - {fileID: 5991288268641580840, guid: 40de47f122512654d9db20e23ef8f52d, type: 3}
+  - {fileID: 5991288268641580840, guid: 40de47f122512654d9db20e23ef8f52d, type: 3}
+  - {fileID: 5991288268641580840, guid: 40de47f122512654d9db20e23ef8f52d, type: 3}
+  - {fileID: 5991288268641580840, guid: 40de47f122512654d9db20e23ef8f52d, type: 3}
+  - {fileID: 5991288268641580840, guid: 40de47f122512654d9db20e23ef8f52d, type: 3}
 --- !u!1001 &1318411628
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -722,6 +748,18 @@ CapsuleCollider:
   m_Height: 1.86
   m_Direction: 1
   m_Center: {x: 0, y: 0.91, z: 0}
+--- !u!114 &1377436808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377436802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3da35efd33d7c04d9fc7524fbaa47f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1447816146
 GameObject:
   m_ObjectHideFlags: 0

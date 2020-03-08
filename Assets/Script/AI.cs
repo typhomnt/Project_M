@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EnemyType
+public class AI : MonoBehaviour
 {
-    Tower, Robot
-}
+    public enum EnemyType
+    {
+        Tower, Robot
+    }
 
-public class TowerAI : MonoBehaviour
-{
     public EnemyType enemy_type = EnemyType.Tower;
     public float fire_recharge = 1.0f;
     public float rotation_speed = 1.0f;
@@ -22,9 +22,10 @@ public class TowerAI : MonoBehaviour
     private float fire_timer = 0.0f;
     private int current_waypoint = 0;
 
+
     void Start()
     {
-        
+        ;
     }
 
     void Update()
@@ -42,7 +43,7 @@ public class TowerAI : MonoBehaviour
         }
         else
         {
-            if(enemy_type == EnemyType.Tower)
+            if (enemy_type == EnemyType.Tower)
             {
                 gameObject.transform.Rotate(Vector3.up, rotation_speed * Mathf.PI * Time.deltaTime);
             }
@@ -53,7 +54,7 @@ public class TowerAI : MonoBehaviour
                 gameObject.transform.forward = Vector3.RotateTowards(gameObject.transform.forward, Vector3.Normalize(dir), rotation_speed * Time.deltaTime * Mathf.PI, 1.0f);
                 gameObject.transform.position += Vector3.Normalize(dir) * Time.deltaTime * movement_speed;
 
-                if(dir.magnitude < Mathf.Epsilon * 10)
+                if (dir.magnitude < Mathf.Epsilon * 10)
                 {
                     current_waypoint = (current_waypoint + 1) % robot_waypoints.Count;
                 }
@@ -80,7 +81,7 @@ public class TowerAI : MonoBehaviour
         {
             fire_timer += Time.deltaTime;
 
-            if(fire_timer >= fire_recharge)
+            if (fire_timer >= fire_recharge)
             {
                 fire_timer -= fire_recharge;
                 GameObject bullet = Instantiate(projectile);
