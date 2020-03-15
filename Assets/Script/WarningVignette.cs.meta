@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/Script/AI.cs.meta
-guid: b468ec19f455d534f87feba85ed04794
-=======
-guid: da73252fe615be84fbe0c4c34f013f37
->>>>>>> origin/master:Assets/Script/EnemyAI.cs.meta
+guid: d0d2b9d2afdd11941b96f7f3d5683f6c
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

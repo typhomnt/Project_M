@@ -17,10 +17,12 @@ public class AI : MonoBehaviour
     public Player player;
     public GameObject projectile;
     public List<GameObject> robot_waypoints;
+    public float fov = 90.0f;
 
     private bool shooting_ = false;
     private float fire_timer = 0.0f;
     private int current_waypoint = 0;
+    private GameObject current_projectile;
 
 
     void Start()
@@ -39,7 +41,7 @@ public class AI : MonoBehaviour
     {
         if (shooting_)
         {
-            gameObject.transform.LookAt(player.gameObject.transform, Vector3.up);
+            gameObject.transform.parent.transform.LookAt(player.gameObject.transform, Vector3.up);
         }
         else
         {
@@ -49,7 +51,7 @@ public class AI : MonoBehaviour
             }
             else
             {
-                Vector3 dir = robot_waypoints[current_waypoint].transform.position - gameObject.transform.position;
+                /*Vector3 dir = robot_waypoints[current_waypoint].transform.position - gameObject.transform.position;
                 dir.y = 0.0f;
                 gameObject.transform.forward = Vector3.RotateTowards(gameObject.transform.forward, Vector3.Normalize(dir), rotation_speed * Time.deltaTime * Mathf.PI, 1.0f);
                 gameObject.transform.position += Vector3.Normalize(dir) * Time.deltaTime * movement_speed;
@@ -57,7 +59,8 @@ public class AI : MonoBehaviour
                 if (dir.magnitude < Mathf.Epsilon * 10)
                 {
                     current_waypoint = (current_waypoint + 1) % robot_waypoints.Count;
-                }
+                }*/
+                gameObject.transform.parent.transform.Rotate(Vector3.up, rotation_speed * Mathf.PI * Time.deltaTime);
             }
         }
     }
@@ -65,27 +68,24 @@ public class AI : MonoBehaviour
     private void Look()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity))
-        {
-            shooting_ = hit.collider.gameObject == player.gameObject;
-        }
-        else
-        {
-            shooting_ = false;
-        }
+        //bool view_condition = Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity);
+        bool view_condition =  Mathf.Abs(Mathf.Acos(Vector3.Dot(transform.parent.transform.forward, Vector3.Normalize(player.gameObject.transform.position - transform.position)))) < fov*Mathf.Deg2Rad;
+        shooting_ = view_condition;
     }
 
     private void Shoot()
     {
         if (shooting_)
         {
-            fire_timer += Time.deltaTime;
-
+            fire_timer += 0.1f;//Time.deltaTime;
             if (fire_timer >= fire_recharge)
             {
                 fire_timer -= fire_recharge;
-                GameObject bullet = Instantiate(projectile);
-                projectile.GetComponent<Rigidbody>().AddForce(transform.forward);
+                current_projectile = Instantiate(projectile);
+                current_projectile.transform.position = robot_waypoints[current_waypoint].transform.position;
+                current_projectile.GetComponent<Rigidbody>().AddForce(transform.parent.transform.forward*100);
+                current_projectile.GetComponent<Projectile>().player = player;
+                current_waypoint = (current_waypoint + 1) % robot_waypoints.Count;
             }
         }
         else
